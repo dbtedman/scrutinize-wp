@@ -4,5 +4,8 @@
 # Don't include Composer dependencies
 /vendor/
 
+# Don't include tempoary directory
+/.temp/
+
 # Keep this file even if directory has been ignored
 !.keep

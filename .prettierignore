@@ -9,3 +9,6 @@
 
 # Don't touch IDE configuraiton
 /.idea/
+
+# Don't touch temp files
+/.temp/

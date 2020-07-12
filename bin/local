@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+#
+# Setup a local development environment.
+#
+#-------------------------------------------------------------------------------
+
+DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+DIR_ROOT="${DIR/\/bin/}"
+DIR_CURRENT=$(pwd)
+
+cd "${DIR}" || exit
+
+source "./_shared"
+
+cd "${DIR_ROOT}" || exit
+
+# Cleanup any previously created environment.
+docker-compose down --volumes --rmi local
+
+# Provision local environment.
+docker-compose up --detach
+
+# Ensure files have correct permissions.
+ensure docker exec -it \
+    --user root \
+    "scrutinize_wp_web" \
+    chown -R www-data:www-data /var/www/html/
+
+# Wait till we have a running application before continuing.
+wait_for_url "http://localhost:8080/wp-admin/install.php" 30
+
+# Complete Wordpress install that requires running application.
+docker exec -it \
+    --user www-data \
+    "scrutinize_wp_web" \
+    /usr/local/bin/setup
+
+success_message "Now visit http://localhost:8080/"
+
+cd "${DIR_CURRENT}" || exit

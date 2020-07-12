@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------------
+#
+# Setup WordPress
+#
+#-------------------------------------------------------------------------------
+
+wp-cli core version
+wp-cli core install \
+  --url="http://localhost:8080" \
+  --title=Example \
+  --admin_user=admin \
+  --admin_password=admin \
+  --admin_email=info@example.com \
+  --skip-email
+
+# Update site configuration.
+wp-cli option update blogdescription "Demo"
+wp-cli option update timezone_string "Australia/Brisbane"
+
+# Create dashboard and assign as home page.
+dashboard=$(
+  wp-cli post create \
+    --post_status=publish \
+    --post_type=page \
+    --post_title="Dashboard" \
+    --porcelain
+)
+wp-cli option update show_on_front page
+wp-cli option update page_on_front ${dashboard}
+
+wp-cli option update permalink_structure "/%year%/%monthnum%/%day%/%postname%/"
+
+# Cleanup pre-packaged plugins.
+wp-cli plugin delete hello
+wp-cli plugin delete akismet
+
+wp-cli plugin activate scrutinize-wp
