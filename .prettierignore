@@ -3,3 +3,9 @@
 
 # Don't touch Yarn lock file
 /yarn.lock
+
+# Don't touch Composer dependencies
+/vendor/
+
+# Don't touch IDE configuraiton
+/.idea/

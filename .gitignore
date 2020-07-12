@@ -1,5 +1,8 @@
 # Don't include Yarn dependencies
 /node_modules/
 
+# Don't include Composer dependencies
+/vendor/
+
 # Keep this file even if directory has been ignored
 !.keep

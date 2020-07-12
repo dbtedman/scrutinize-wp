@@ -3,12 +3,13 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "_prettier": "prettier './**/*.{md,yml,yaml,json,ts,js}'",
+    "_prettier": "prettier './**/*.{md,yml,yaml,json,ts,js,xml}'",
     "format": "yarn _prettier --write",
     "lint": "yarn _prettier --check",
     "test": "yarn lint"
   },
   "devDependencies": {
+    "@prettier/plugin-xml": "0.8.0",
     "husky": "4.2.5",
     "prettier": "2.0.5"
   }

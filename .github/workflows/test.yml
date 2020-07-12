@@ -22,8 +22,13 @@ jobs:
               with:
                   node-version: "12.x"
 
+            - uses: "shivammathur/setup-php@master"
+              with:
+                  php-version: "7.4"
+                  coverage: "xdebug"
+
             - name: "Install"
-              run: "yarn install --no-audit"
+              run: "yarn install --no-audit && composer install"
 
             - name: "Verify"
-              run: "yarn test"
+              run: "yarn test && composer test"
