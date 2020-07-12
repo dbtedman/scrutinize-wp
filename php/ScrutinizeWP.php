@@ -19,6 +19,10 @@ class ScrutinizeWP
      */
     private Logger $logger;
 
+    /**
+     * @param WordPress $wp
+     * @param Logger $logger
+     */
     public function __construct(WordPress $wp, Logger $logger)
     {
         $this->wp = $wp;

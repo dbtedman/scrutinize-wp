@@ -14,11 +14,9 @@ wp core install \
     --admin_email=info@example.com \
     --skip-email
 
-# Update site configuration.
 wp option update blogdescription "Demo"
 wp option update timezone_string "Australia/Brisbane"
 
-# Create dashboard and assign as home page.
 dashboard=$(
     wp post create \
         --post_status=publish \
@@ -31,11 +29,12 @@ wp option update page_on_front ${dashboard}
 
 wp option update permalink_structure "/%year%/%monthnum%/%day%/%postname%/"
 
-# Cleanup pre-packaged plugins.
 wp plugin delete hello
 wp plugin delete akismet
 
 wp theme delete twentynineteen
 wp theme delete twentyseventeen
+
+wp site empty --yes
 
 wp plugin activate scrutinize-wp
