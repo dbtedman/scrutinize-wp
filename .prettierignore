@@ -1,0 +1,5 @@
+# Don't touch Yarn dependencies
+/node_modules/
+
+# Don't touch Yarn lock file
+/yarn.lock

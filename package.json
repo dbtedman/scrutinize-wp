@@ -1,0 +1,15 @@
+{
+  "name": "scrutinize-wp",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "_prettier": "prettier './**/*.{md,yml,yaml,json,ts,js}'",
+    "format": "yarn _prettier --write",
+    "lint": "yarn _prettier --check",
+    "test": "yarn lint"
+  },
+  "devDependencies": {
+    "husky": "4.2.5",
+    "prettier": "2.0.5"
+  }
+}
