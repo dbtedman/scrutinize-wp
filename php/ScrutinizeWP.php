@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace ScrutinizeWP;
 
+use ScrutinizeWP\Gateways\Logger\Logger;
+use ScrutinizeWP\Gateways\Logger\LogMessages;
 use ScrutinizeWP\Gateways\WordPress\WordPress;
-use ScrutinizeWP\Gateways\WordPress\WordPressActual;
 
 class ScrutinizeWP
 {
@@ -13,8 +14,19 @@ class ScrutinizeWP
      */
     private WordPress $wp;
 
-    public function __construct()
+    /**
+     * @var Logger
+     */
+    private Logger $logger;
+
+    public function __construct(WordPress $wp, Logger $logger)
     {
-        $this->wp = new WordPressActual();
+        $this->wp = $wp;
+        $this->logger = $logger;
+    }
+
+    public function init(): void
+    {
+        $this->logger->audit(LogMessages::AUDIT_001);
     }
 }
