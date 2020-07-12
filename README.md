@@ -1,6 +1,8 @@
 # [Scrutinize WP](https://github.com/dbtedman/scrutinize-wp)
 
-> Not production ready software, please wait for v1..0.0 to be released.
+> NOTE: Not production ready software, please wait for v1.0.0 to be released.
+
+[![GitHub Actions](https://github.com/dbtedman/scrutinize-wp/workflows/Test/badge.svg)](https://github.com/dbtedman/scrutinize-wp/actions?workflow=Test)
 
 Scrutinize your WordPress deployment to ensure it remains secure, accessible, and performant.
 
