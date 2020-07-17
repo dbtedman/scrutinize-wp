@@ -6,6 +6,7 @@ namespace ScrutinizeWP;
 use ScrutinizeWP\Gateways\Logger\Logger;
 use ScrutinizeWP\Gateways\Logger\LogMessages;
 use ScrutinizeWP\Gateways\WordPress\WordPress;
+use ScrutinizeWP\Ports\Ports;
 
 class ScrutinizeWP
 {
@@ -32,5 +33,8 @@ class ScrutinizeWP
     public function init(): void
     {
         $this->logger->audit(LogMessages::AUDIT_001);
+
+        $ports = new Ports();
+        $ports->attach();
     }
 }

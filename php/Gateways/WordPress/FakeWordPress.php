@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ScrutinizeWP\Gateways\WordPress;
 
-class TestWordPress implements WordPress
+class FakeWordPress implements WordPress
 {
     /**
      * @inheritDoc

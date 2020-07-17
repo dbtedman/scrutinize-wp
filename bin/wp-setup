@@ -17,16 +17,6 @@ wp core install \
 wp option update blogdescription "Demo"
 wp option update timezone_string "Australia/Brisbane"
 
-dashboard=$(
-    wp post create \
-        --post_status=publish \
-        --post_type=page \
-        --post_title="Dashboard" \
-        --porcelain
-)
-wp option update show_on_front page
-wp option update page_on_front ${dashboard}
-
 wp option update permalink_structure "/%year%/%monthnum%/%day%/%postname%/"
 
 wp plugin delete hello
@@ -36,5 +26,15 @@ wp theme delete twentynineteen
 wp theme delete twentyseventeen
 
 wp site empty --yes
+
+dashboard=$(
+    wp post create \
+        --post_status=publish \
+        --post_type=page \
+        --post_title="Dashboard" \
+        --porcelain
+)
+wp option update show_on_front page
+wp option update page_on_front ${dashboard}
 
 wp plugin activate scrutinize-wp
