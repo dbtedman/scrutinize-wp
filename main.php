@@ -13,8 +13,8 @@ declare(strict_types=1);
  *
  *----------------------------------------------------------------------------*/
 
-use ScrutinizeWP\Gateways\Logger\FileLogger;
-use ScrutinizeWP\Gateways\WordPress\WordPressActual;
+use ScrutinizeWP\Gateways\Logger\LoggerImplementation;
+use ScrutinizeWP\Gateways\WordPress\WordPressImplementation;
 use ScrutinizeWP\ScrutinizeWP;
 
 // Load Composer dependencies along with out plugin source
@@ -22,7 +22,7 @@ if (is_readable(__DIR__ . '/vendor/autoload.php')) {
     require __DIR__ . '/vendor/autoload.php';
 }
 
-$wp = new WordPressActual();
-$logger = new FileLogger();
+$wp = new WordPressImplementation();
+$logger = new LoggerImplementation();
 $plugin = new ScrutinizeWP($wp, $logger);
 $plugin->init();

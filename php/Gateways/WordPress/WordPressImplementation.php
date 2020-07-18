@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace ScrutinizeWP\Gateways\WordPress;
 
-class FakeWordPress implements WordPress
+class WordPressImplementation implements WordPress
 {
     /**
      * @inheritDoc
      */
     public function render(string $content): void
     {
-        // TODO: Implement render() method.
+        echo $content;
     }
 
     /**
@@ -18,7 +18,7 @@ class FakeWordPress implements WordPress
      */
     public function action(string $name, callable $action, int $priority = 10, $arguments = 1): void
     {
-        // TODO: Implement action() method.
+        add_action($name, $action, $priority, $arguments);
     }
 
     /**
@@ -26,6 +26,6 @@ class FakeWordPress implements WordPress
      */
     public function filter(string $name, callable $action, int $priority = 10, $arguments = 1): void
     {
-        // TODO: Implement filter() method.
+        add_filter($name, $action, $priority, $arguments);
     }
 }

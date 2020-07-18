@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ScrutinizeWP\Gateways\Logger;
 
-class FileLogger implements Logger
+class LoggerImplementation implements Logger
 {
     /**
      * @inheritDoc
